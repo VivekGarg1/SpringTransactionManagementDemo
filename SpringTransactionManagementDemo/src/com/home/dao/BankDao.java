@@ -6,6 +6,6 @@ import com.home.model.Account;
 public interface BankDao {
 	
 	public abstract void withdraw(Account fromAccount,Account toAccount,Double amount) throws InsufficientAccountBalance;
-	public abstract void deposite(Account fromAccount,Account toAccount,Double amount);
+	public abstract void deposit(Account fromAccount,Account toAccount,Double amount);
 
 }

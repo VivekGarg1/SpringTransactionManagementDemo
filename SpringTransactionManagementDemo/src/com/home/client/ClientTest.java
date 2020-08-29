@@ -20,7 +20,7 @@ public class ClientTest {
 		Account toAccount=new Account();
 		toAccount.setAccountNo(987654321L);
 		
-		bankService.transferFund(fromAccount, toAccount, 2500.0);
+		bankService.transferFund(fromAccount, toAccount, 500.0);
 		context.close();
 	}
 }

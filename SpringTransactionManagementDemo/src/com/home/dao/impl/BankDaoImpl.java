@@ -15,10 +15,6 @@ public class BankDaoImpl implements BankDao {
 	@Autowired
 	private JdbcTemplate jdbctemplate;
 
-	public void setJdbctemplate(JdbcTemplate jdbctemplate) {
-		this.jdbctemplate = jdbctemplate;
-	}
-
 	@Override
 	public void withdraw(Account fromAccount, Account toAccount, Double amount) throws InsufficientAccountBalance {
 		Account accountFromDB = getAccountInfoFromDB(fromAccount.getAccountNo());
@@ -36,7 +32,7 @@ public class BankDaoImpl implements BankDao {
 	}
 
 	@Override
-	public void deposite(Account fromAccount, Account toAccount, Double amount) {
+	public void deposit(Account fromAccount, Account toAccount, Double amount) {
 		Account accountFromDB = getAccountInfoFromDB(toAccount.getAccountNo());
 		Double accountBalance = accountFromDB.getAccountBalance() + amount;
 		String sql = "update bank_table set account_balance=? where account_no=?";
@@ -44,6 +40,7 @@ public class BankDaoImpl implements BankDao {
 		if (update > 0) {
 			System.out.println("Amount Rs. " + amount + " is deposited in Account No: " + toAccount.getAccountNo());
 		}
+		//throw new RuntimeException();
 	}
 
 	private Account getAccountInfoFromDB(Long accountNo) {
